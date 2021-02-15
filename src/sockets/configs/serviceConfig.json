@@ -1,0 +1,10 @@
+{
+    "signUp": "signUp",
+    "login"  : "login",
+    "logout" : "logout",
+    "loginOnline" : "loginOnline",
+    "joinRoom" : "joinRoom",
+    "sendMessage" : "sendMessage",
+    "historyMessage" : "historyMessage"
+   
+}

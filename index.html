@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="test">submit</button>
+</body>
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js"></script>
+
+<script>
+    document.getElementById("test").addEventListener('click', () => {
+
+        var socket = io("http://chatonline.surge.sh/", {
+            transports: ['websocket', 'polling', 'flashsocket'],
+        });
+        // https://blockchainfarm.com.vn/
+        // sendMessage
+        //     var data = {
+        //     "api_passer":
+        //     {
+        //         "key_passer": "sendMessage",
+        //         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiZW1haWxAZ21haWwuY29tIiwiZnVsbE5hbWUiOiJ0ZXN0bW9uZ29kYiIsIl9pZCI6IjYwMjU1NGJmNDgyMWU3MjAyNGMzN2NlMiIsImlkU29ja2V0IjoicWpyOU1ZZF9jUU5kNmFRc0FBQUQifSwiaWF0IjoxNjEzMTgzNjY4LCJleHAiOjE2NDQyODc2Njh9.utl8oEDfpIghUTTbfSU24QEgMEKPT2QSqkLiRnpbH8w",
+        //         "message": "gâu gâu",
+        //         "room" : "60276175a974f018540c0b6e"
+        //     }
+        // }
+        // historyMessage
+        // var data = {
+        //     "api_passer":
+        //     {
+        //         "key_passer": "historyMessage",
+        //         "idRoom" : "60276175a974f018540c0b6e"
+        //     }
+        // }
+        // joinRoom
+        // var data = {
+        //     "api_passer":
+        //     {
+        //         "key_passer": "joinRoom",
+        //         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiZW1haWxAZ21haWwuY29tIiwiZnVsbE5hbWUiOiJ0ZXN0bW9uZ29kYiIsIl9pZCI6IjYwMjU1NGJmNDgyMWU3MjAyNGMzN2NlMiIsImlkU29ja2V0IjoicWpyOU1ZZF9jUU5kNmFRc0FBQUQifSwiaWF0IjoxNjEzMTgzNjY4LCJleHAiOjE2NDQyODc2Njh9.utl8oEDfpIghUTTbfSU24QEgMEKPT2QSqkLiRnpbH8w",
+        //         // "email": "email@gmail.com",
+        //         // emailtest@gmail.com
+        //         "idUser": "60248490d8bf524a3cb70d2a"
+        //     }
+        // }
+        // login
+        // var data = {
+        //     "api_passer":
+        //     {
+        //         "key_passer": "login",
+        //         "email": "emailtest@gmail.com",
+        //         // emailtest@gmail.com
+        //         "password": "asdsad123123"
+        //     }
+        // }
+        var data = {
+            "api_passer":
+            {
+                "key_passer": "signUp",
+                "fullName": "testmongodb",
+                "email": "email@gmail.com",
+                // emailtest@gmail.com
+                "password": "asdsad123123"
+            }
+        }
+        // var data = {
+        //     "api_passer":
+        //     {
+        //         "key_passer": "login",
+        //         "email": "email@gmail.com",
+        //         //  email
+        //         "password": "asdsad123123"
+        //     }
+        // }
+        // logout 
+        // var data = {
+        //     "api_passer":
+        //     {
+        //         "key_passer": "logout",
+        //         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiZW1haWx0ZXN0QGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoidGVzdG1vbmdvZGIiLCJfaWQiOiI2MDI0ODQ5MGQ4YmY1MjRhM2NiNzBkMmEiLCJpZFNvY2tldCI6IkpZNm5pZ294S0tHb01CYTJBQUFGIn0sImlhdCI6MTYxMzAxMjcwNiwiZXhwIjoxNjQ0MTE2NzA2fQ.uzgJL6hW-3LfP44g2sTODs6xP8b2S_IFE--FZsVK7Qs"
+        //     }
+        // }
+        /// loginOnline 
+        // var data = {
+        //     "api_passer":
+        //     {
+        //         "key_passer": "loginOnline",
+        //         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiZW1haWx0ZXN0QGdtYWlsLmNvbSIsImZ1bGxOYW1lIjoidGVzdG1vbmdvZGIiLCJfaWQiOiI2MDI0ODQ5MGQ4YmY1MjRhM2NiNzBkMmEiLCJpZFNvY2tldCI6IkpZNm5pZ294S0tHb01CYTJBQUFGIn0sImlhdCI6MTYxMzAxMjcwNiwiZXhwIjoxNjQ0MTE2NzA2fQ.uzgJL6hW-3LfP44g2sTODs6xP8b2S_IFE--FZsVK7Qs"
+        //     }
+        // }
+        socket.emit('/apiChatOnline', data)
+        // joinRoom
+        socket.on('joinRoom', (res) => {
+            console.log(res, "joinRoom");
+        })
+        // historyMessage
+        socket.on('historyMessage', (res) => {
+            console.log(res, "historyMessage");
+        })
+        socket.on('sendMessage', (res) => {
+            console.log(res, "sendMessage");
+        })
+        socket.on('message', (res) => {
+            console.log(res, "message");
+        })
+        socket.on('signUp', (res) => {
+            console.log(res, "signUp");
+        })
+        socket.on('login', (res) => {
+            console.log(res, "login");
+        })
+        socket.on('listUser', (res) => {
+            console.log(res, "listUser");
+        })
+        socket.on('logout', (res) => {
+            console.log(res, "logout");
+        })
+        socket.on('loginOnline', (res) => {
+            console.log(res, "loginOnline");
+        })
+    })
+</script>
+
+</html>
